@@ -1,0 +1,199 @@
+body {
+  font-family: sans-serif;
+  color: #333;
+  margin: 0;
+  background: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      background: gold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    li a:hover {
+      color: blue;
+    }
+  }
+}
+
+.hero {
+  padding: 40px 20px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: #666;
+  }
+
+  .hero-box {
+    overflow-x: auto;
+  }
+}
+
+.headquarter {
+  background: #fff;
+  padding: 40px 20px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #aaa;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.message-section {
+  background: #fff;
+  padding: 60px 20px;
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+
+    .form-group {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 10px;
+
+      label {
+        color: #333;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: blue;
+        outline: none;
+      }
+
+      .radio {
+        display: flex;
+        gap: 20px;
+      }
+
+      .error {
+        grid-column: 2; /* supaya error muncul di bawah input */
+        color: red;
+        margin-top: 2px;
+      }
+    }
+
+    button {
+      justify-self: start;
+      padding: 12px 20px;
+      background: blue;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: darkblue;
+    }
+  }
+
+  .output {
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    min-height: 100px;
+    line-height: 1.5;
+  }
+}
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+}
+

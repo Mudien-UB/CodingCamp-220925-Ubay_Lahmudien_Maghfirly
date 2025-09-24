@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Website</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container header">
+      <div class="logo">
+        <div class="icon">:)</div>
+        <span>My Website</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="profile.html">Our Profile</a></li>
+          <li><a href="#">Portofolio</a></li>
+          <li><a href="#message">Message Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <h1 id="welcome">Hi, Welcome To Website</h1>
+    <p>Ini adalah website latihan pertama</p>
+    <div class="hero-box">
+      <svg width="1366" height="578">
+        <rect width="1366" height="578" fill="#ddd"></rect>
+        <text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle" fill="#555" font-size="20">
+          1366 x 578
+        </text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Our Headquarter -->
+  <section class="headquarter">
+    <div class="container">
+      <h2>Our Headquarter</h2>
+      <div class="grid">
+        <div class="item">
+          <div class="circle"></div>
+          <span>Jakarta</span>
+        </div>
+        <div class="item">
+          <div class="circle"></div>
+          <span>Bandung</span>
+        </div>
+        <div class="item">
+          <div class="circle"></div>
+          <span>Surabaya</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="message-section">
+    <div class="container">
+      <h2>Message Us</h2>
+      <div class="form-grid">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" />
+            <p id="errorName" class="error"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="birthdate">Tanggal Lahir</label>
+            <input type="date" id="birthdate" />
+            <p id="errorBirthdate" class="error"></p>
+          </div>
+
+          <div class="form-group">
+            <label>Jenis Kelamin</label>
+            <div class="radio">
+              <label><input type="radio" name="sex" value="Laki-laki" /> Laki-laki</label>
+              <label><input type="radio" name="sex" value="Perempuan" /> Perempuan</label>
+            </div>
+            <p id="errorSex" class="error"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" rows="4"></textarea>
+            <p id="errorMessage" class="error"></p>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+
+        <div id="output" class="output">
+          Send me message
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Created by RevoU</p>
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
+
