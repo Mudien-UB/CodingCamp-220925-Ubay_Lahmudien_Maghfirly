@@ -1,56 +1,59 @@
-const welcome = document.getElementById("welcome");
-const form = document.getElementById("contactForm");
-const nameInput = document.getElementById("name");
-const birthdateInput = document.getElementById("birthdate");
-const sexInputs = document.getElementsByName("sex");
-const messageInput = document.getElementById("message");
 const output = document.getElementById("output");
+const welcome = document.getElementById("welcome");
 
-const errorName = document.getElementById("errorName");
-const errorBirthdate = document.getElementById("errorBirthdate");
-const errorSex = document.getElementById("errorSex");
-const errorMessage = document.getElementById("errorMessage");
-
-form.addEventListener("submit", function (e) {
+const onSubmit = (e) => {
   e.preventDefault();
 
-  console.log("cek")
+  const form = e.target;
+  const name = form.elements.name.value.trim();
+  const birthdate = form.elements.birthdate.value.trim();
+  const sex = Array.from(form.elements.sex).find(r => r.checked);
+  const message = form.elements.message.value.trim();
 
-  const name = nameInput.value.trim();
-  const birthdate = birthdateInput.value.trim();
-  const sex = Array.from(sexInputs).find(r => r.checked);
-  const message = messageInput.value.trim();
-
-
-  [errorName, errorBirthdate, errorSex, errorMessage].forEach(err =>
-    err.classList.add("hidden")
-  );
+  const errorFields = form.querySelectorAll(".error");
+  errorFields.forEach(err => {
+    err.textContent = "";
+    err.classList.add("hidden");
+  });
 
   let valid = true;
 
-  if (name.length < 3) {
-    errorName.textContent = "Nama minimal 3 karakter";
-    errorName.classList.remove("hidden");
+  if(name === ""){
+    errorFields[0].textContent = "Nama tidak boleh kosong";
+    errorFields[0].classList.remove("hidden");
+    valid = false;
+  }else if (name.length < 3) {
+    errorFields[0].textContent = "Nama minimal 3 karakter";
+    errorFields[0].classList.remove("hidden");
     valid = false;
   }
 
-  if (!birthdate) {
-    errorBirthdate.textContent = "Tanggal lahir harus diisi";
-    errorBirthdate.classList.remove("hidden");
+ if (!birthdate) {
+    errorFields[1].textContent = "Tanggal lahir harus diisi";
+    errorFields[1].classList.remove("hidden");
+    valid = false;
+  } else if (!isValidDate(birthdate)) {
+    errorFields[1].textContent = "Tanggal lahir tidak valid";
+    errorFields[1].classList.remove("hidden");
     valid = false;
   }
 
   if (!sex) {
-    errorSex.textContent = "Pilih jenis kelamin";
-    errorSex.classList.remove("hidden");
+    errorFields[2].textContent = "Pilih jenis kelamin";
+    errorFields[2].classList.remove("hidden");
     valid = false;
   }
 
-  if (message.length < 5) {
-    errorMessage.textContent = "Pesan minimal 5 karakter";
-    errorMessage.classList.remove("hidden");
+  if(message === ""){
+    errorFields[3].textContent = "Pesan tidak boleh kosong";
+    errorFields[3].classList.remove("hidden");
+    valid = false;
+  } else if (message.length < 5) {
+    errorFields[3].textContent = "Pesan minimal 5 karakter";
+    errorFields[3].classList.remove("hidden");
     valid = false;
   }
+
 
   if (valid) {
     const currentTime = new Date().toString();
@@ -63,6 +66,52 @@ form.addEventListener("submit", function (e) {
     `;
     welcome.textContent = `Hi ${name}, Welcome To Website`;
   } else {
-    output.innerHTML = ""; 
+    output.innerHTML = "Tolong masukkan data yang valid !";
+    welcome.textContent = "Hi, Welcome To Website";
   }
-});
+}
+
+const isValidDate = (dateStr) => {
+
+if (!dateStr) return false;
+
+  const parts = dateStr.split("-"); 
+  if (parts.length !== 3) return false;
+
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10);
+  const day = parseInt(parts[2], 10);
+
+  if (isNaN(year) || isNaN(month) || isNaN(day)) return false;
+  if (month < 1 || month > 12) return false;
+  if (day < 1 || day > 31) return false;
+
+  const date = new Date(year, month - 1, day);
+  return (
+    date.getFullYear() === year &&
+    date.getMonth() + 1 === month &&
+    date.getDate() === day
+  );
+}
+
+const toggleMenu = () => {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("show");
+
+  if (navLinks.classList.contains("show")) {
+    document.addEventListener("click", closeMenuOutside);
+  } else {
+    document.removeEventListener("click", closeMenuOutside);
+  }
+}
+
+const closeMenuOutside = (event) => {
+  const navLinks = document.getElementById("navLinks");
+  const toggleBtn = document.querySelector(".menu-toggle");
+
+  if (!navLinks.contains(event.target) && !toggleBtn.contains(event.target)) {
+    navLinks.classList.remove("show");
+    document.removeEventListener("click", closeMenuOutside);
+  }
+}
+
